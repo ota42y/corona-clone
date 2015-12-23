@@ -12,6 +12,7 @@ enum Mode {
     case Wait
     case TrainingWait
     case Training
+    case Analyze
 }
 
 class ViewController: UIViewController, BluetoothStateDelegate {
@@ -21,8 +22,9 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     @IBOutlet weak var trainingStartButton: UIButton!
     @IBOutlet weak var connectionLabel: UILabel!
 
+    var RSSI_INTERVAL = 0.2 //
     var RSSI_VERTOR_LENGTH = 10 //
-    var TRAINING_COUNT = 10
+    var TRAINING_COUNT = 40
     var TRAINING_URL = "http://192.168.1.1:8080"  // change me
 
     var mode = Mode.Wait
@@ -31,6 +33,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
 
     var touchPoint: CGPoint!
     var touchPointImageView: UIImageView!
+    var analyzePointImageView: UIImageView!
     var connector = BluetoothConnector()
 
     var rssiArray: [String] = []
@@ -49,12 +52,18 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         view.addSubview(touchPointImageView)
         touchPointImageView.hidden = true
 
+        let orangeImg:UIImage?  = UIImage(named: "orange.png")
+        analyzePointImageView = UIImageView(image: orangeImg)
+        view.addSubview(analyzePointImageView)
+        analyzePointImageView.hidden = true
+
         trainingButton.addTarget(self, action: "onClickTrainingButton:", forControlEvents: .TouchUpInside)
+        analyzeButton.addTarget(self, action: "onClickAnalyzeButton:", forControlEvents: .TouchUpInside)
 
         trainingStartButton.addTarget(self, action: "onClickTrainingStartButton:", forControlEvents: .TouchUpInside)
         disableTrainingStartButton()
 
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(RSSI_INTERVAL, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
 
         deleteTrainingData()
     }
@@ -109,18 +118,39 @@ class ViewController: UIViewController, BluetoothStateDelegate {
             view.addSubview(trainingPoint[nowPointName]!)
 
             rssiArray.removeAll(keepCapacity: true)
-            connector.connectionStart()
         }
     }
 
     internal func onClickTrainingButton(sender: UIButton){
         if (mode == Mode.Wait) {
             // init training
+            connector.connectionStart()
             initTrainingMode();
         } else {
             // end training
+            mode = Mode.Wait
+
+            disableTrainingStartButton()
+            hideTouchPoint()
+
             analyzeButton.enabled = true;
-            mainLabel.text = "touch training button or ";
+            mainLabel.text = "touch training or analyze button";
+        }
+    }
+
+    internal func onClickAnalyzeButton(sender: UIButton) {
+        if (mode == Mode.Wait) {
+            connector.connectionStart()
+
+            analyzeStart()
+        } else {
+            mode = Mode.Wait
+
+            analyzePointImageView.hidden = true
+
+            // end analyze
+            trainingButton.enabled = true
+            mainLabel.text = "touch training or analyze button";
         }
     }
 
@@ -169,6 +199,8 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         var rssiString = rssiArray.joinWithSeparator(",")
         let url = "\(TRAINING_URL)/training?tag=\(nowPointName)&data=\(rssiString)"
 
+        NSLog("training \(rssiString)")
+
         let res = sendServer(url)
         if res == "" {
             return 0
@@ -205,10 +237,46 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         initTrainingMode()
     }
 
+    internal func analyzeStart() {
+        mode = Mode.Analyze
+        mainLabel.text = "analyze..."
+
+        rssiArray.removeAll(keepCapacity: true)
+    }
+
+    func sendAnalyzeData() -> String {
+        var rssiString = rssiArray.joinWithSeparator(",")
+        let url = "\(TRAINING_URL)/analyze?data=\(rssiString)"
+
+        let res = sendServer(url)
+        return res as String
+    }
+
+    func analyze() {
+        let ret = connector.getRSSI()
+        if (ret.success) {
+            rssiArray += ["\(ret.rssi)"]
+            if (rssiArray.count == RSSI_VERTOR_LENGTH) {
+                let pointName = sendAnalyzeData()
+
+                if let point = trainingPoint[pointName]?.center {
+                    analyzePointImageView.center = point
+                    analyzePointImageView.hidden = false
+                    view.bringSubviewToFront(analyzePointImageView)
+                }
+
+                rssiArray.removeFirst()
+            }
+        }
+    }
+
     func onUpdate(timer: NSTimer) {
         switch mode {
         case Mode.Training:
             training()
+            break
+        case Mode.Analyze:
+            analyze()
             break
         default:
             break

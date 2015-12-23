@@ -2,9 +2,49 @@
 import http.server
 from urllib.parse import urlparse, parse_qs
 
+import numpy as np
+from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
+
 t_data = dict()
 tag_number = dict()
 
+def cls(label, data, input):
+    L = np.array(label)
+    D = np.array(data)
+    
+    clf = GaussianNB()
+    clf.fit(D, L) # training
+    
+    result = clf.predict(input)
+    
+    print(result)
+    
+    return result
+
+
+def getLabel(input):
+    label_list = []
+    data_list = []
+    
+    for number, tag in tag_number.items():
+        for data in t_data[tag]:
+            label_list.append(number)
+            data_list.append(data)
+    
+    print(label_list)
+    
+    return cls(label_list, data_list, input)
+
+def analyze(o):
+    dic = parse_qs(o.query)
+    
+    if "data" not in dic:
+        return 503, "not set data"
+    data_list = dic["data"][0].split(",")
+    data = [float(d) for d in data_list]
+    
+    return 200, convName(getLabel([data])[0])
+    
 def convName(label):
     return tag_number[label]
 
@@ -33,8 +73,9 @@ def training(o):
     return 200, str(num)
 
 def deleteAll():
-    t_data = dict()
-    tag_number = dict()
+    t_data.clear()
+    tag_number.clear()
+    print("delete complete")
     return 200, "delete complete"
 
 class myHandler(http.server.SimpleHTTPRequestHandler):
@@ -51,7 +92,9 @@ class myHandler(http.server.SimpleHTTPRequestHandler):
             code, body = training(o)
         elif o.path == "/delete":
             code, body = deleteAll()
-            
+        elif o.path == "/analyze":
+            code, body = analyze(o)
+                    
         self.send_response(code)
         self.send_header('Content-type','text/html')
         self.end_headers()

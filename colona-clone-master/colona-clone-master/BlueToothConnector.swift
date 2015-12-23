@@ -23,7 +23,10 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     }
 
     func connectionStart() {
-        centralManager?.scanForPeripheralsWithServices([cbuuid], options: [CBCentralManagerScanOptionAllowDuplicatesKey:false])
+        if device == nil {
+            NSLog("connection start")
+            centralManager?.scanForPeripheralsWithServices([cbuuid], options: [CBCentralManagerScanOptionAllowDuplicatesKey:false])
+        }
     }
 
     func centralManagerDidUpdateState(central: CBCentralManager) {
