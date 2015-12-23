@@ -23,9 +23,12 @@ class ViewController: UIViewController {
     var mode = Mode.Wait
     var nowPoint: CGPoint!
     var nowPointImageView: UIImageView!
+    var connector = BluetoothConnector()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        connector.createManager()
 
         nowPoint = CGPoint.zero;
 
@@ -75,8 +78,10 @@ class ViewController: UIViewController {
             disableTrainingStartButton()
             trainingButton.enabled = false
 
-            mainLabel.text = "training...";
+            mainLabel.text = "training..."
             mode = Mode.Training
+
+            connector.connectionStart()
         }
     }
 

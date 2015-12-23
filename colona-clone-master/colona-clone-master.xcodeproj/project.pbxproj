@@ -15,7 +15,7 @@
 		922CD9F21C2A1A24002D476C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922CD9F01C2A1A24002D476C /* Main.storyboard */; };
 		922CD9F41C2A1A24002D476C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922CD9F31C2A1A24002D476C /* Assets.xcassets */; };
 		922CD9F71C2A1A24002D476C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922CD9F51C2A1A24002D476C /* LaunchScreen.storyboard */; };
-		922CD9FF1C2A1B00002D476C /* BlueToothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922CD9FE1C2A1B00002D476C /* BlueToothConnector.swift */; };
+		C3F97044775A5EF3D3C5EB83 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F970FF2DCBDDA2D01038E7 /* BluetoothConnector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		922CD9F31C2A1A24002D476C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		922CD9F61C2A1A24002D476C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		922CD9F81C2A1A24002D476C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		922CD9FE1C2A1B00002D476C /* BlueToothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueToothConnector.swift; sourceTree = "<group>"; };
+		C3F970FF2DCBDDA2D01038E7 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				922CD9F31C2A1A24002D476C /* Assets.xcassets */,
 				922CD9F51C2A1A24002D476C /* LaunchScreen.storyboard */,
 				922CD9F81C2A1A24002D476C /* Info.plist */,
-				922CD9FE1C2A1B00002D476C /* BlueToothConnector.swift */,
+				C3F970FF2DCBDDA2D01038E7 /* BluetoothConnector.swift */,
 			);
 			path = "colona-clone-master";
 			sourceTree = "<group>";
@@ -152,8 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				922CD9EF1C2A1A24002D476C /* ViewController.swift in Sources */,
-				922CD9FF1C2A1B00002D476C /* BlueToothConnector.swift in Sources */,
 				922CD9ED1C2A1A24002D476C /* AppDelegate.swift in Sources */,
+				C3F97044775A5EF3D3C5EB83 /* BluetoothConnector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
