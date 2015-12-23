@@ -26,6 +26,10 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     var nowPointImageView: UIImageView!
     var connector = BluetoothConnector()
 
+    var RSSI_VERTOR_LENGTH = 10 //
+    var trainingCount = 0
+    var rssiArray: [Double] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +46,8 @@ class ViewController: UIViewController, BluetoothStateDelegate {
 
         trainingStartButton.addTarget(self, action: "onClickTrainingStartButton:", forControlEvents: .TouchUpInside)
         disableTrainingStartButton()
+
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
     }
 
     internal func enableTrainingStartButton() {
@@ -82,6 +88,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
             mainLabel.text = "training..."
             mode = Mode.Training
 
+            rssiArray.removeAll(keepCapacity: true)
             connector.connectionStart()
         }
     }
@@ -107,6 +114,31 @@ class ViewController: UIViewController, BluetoothStateDelegate {
 
     func changeState(text: String) {
         connectionLabel.text = "connection: " + text
+    }
+
+    func sendTrainingData() {
+        NSLog("\(rssiArray)")
+    }
+
+    func training() {
+        let ret = connector.getRSSI()
+        if (ret.success) {
+            rssiArray += [ret.rssi]
+            if (rssiArray.count == RSSI_VERTOR_LENGTH) {
+                sendTrainingData()
+                rssiArray.removeFirst()
+            }
+        }
+    }
+
+    func onUpdate(timer: NSTimer) {
+        switch mode {
+        case Mode.Training:
+            training()
+            break
+        default:
+            break
+        }
     }
 }
 

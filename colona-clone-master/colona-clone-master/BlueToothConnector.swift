@@ -49,17 +49,58 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
         }
     }
 
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+        if (error != nil) {
+            deletage!.changeState("error \(error) and retry")
+            connectionStart()
+            return
+        }
+
+        if !(peripheral.services?.count > 0) {
+            deletage!.changeState("no services and not retry...")
+            return
+        }
+
+        let services = peripheral.services!
+        deletage!.changeState("secvices found...")
+    }
 
     func centralManager(central: CBCentralManager,
                         didConnectPeripheral peripheral: CBPeripheral)
     {
         deletage!.changeState("connected")
+
+        device!.discoverServices([cbuuid])
     }
 
     func centralManager(central: CBCentralManager,
                         didFailToConnectPeripheral peripheral: CBPeripheral,
                         error: NSError?)
     {
-        deletage!.changeState("connection faild...")
+        deletage!.changeState("faild...")
+    }
+
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?){
+        deletage!.changeState("disconnected and retry..")
+
+        centralManager?.connectPeripheral(device!, options: nil)
+    }
+
+    func getRSSI() -> (rssi: Double, success: Bool) {
+        if let d = device {
+            if (d.state == CBPeripheralState.Connected) {
+                d.readRSSI()
+
+                if let rssiValue = d.RSSI {
+                    let rssi = rssiValue.doubleValue
+                    if  -0.1 < rssi && rssi < 0.1 { // if get 0, not success
+                        return (-1, false)
+                    }
+
+                    return (rssi, true)
+                }
+            }
+        }
+        return (-1, false)
     }
 }
