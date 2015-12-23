@@ -14,11 +14,12 @@ enum Mode {
     case Training
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BluetoothStateDelegate {
     @IBOutlet weak var trainingButton: UIButton!
     @IBOutlet weak var analyzeButton: UIButton!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var trainingStartButton: UIButton!
+    @IBOutlet weak var connectionLabel: UILabel!
 
     var mode = Mode.Wait
     var nowPoint: CGPoint!
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        connector.createManager()
+        connector.createManager(self)
 
         nowPoint = CGPoint.zero;
 
@@ -104,6 +105,8 @@ class ViewController: UIViewController {
         trainingButton.setTitle("end training", forState: UIControlState.Normal)
     }
 
-
+    func changeState(text: String) {
+        connectionLabel.text = "connection: " + text
+    }
 }
 

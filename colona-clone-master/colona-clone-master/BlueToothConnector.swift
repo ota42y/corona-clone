@@ -6,19 +6,23 @@
 import Foundation
 import CoreBluetooth
 
+protocol BluetoothStateDelegate {
+    func changeState(text: String)
+}
+
 class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     var centralManager: CBCentralManager?
     var device: CBPeripheral?
+    var deletage: BluetoothStateDelegate?
 
     var cbuuid = CBUUID(string: "5B2D690E-2AD9-4243-8E33-77DFCF318383")
 
-    func createManager() {
+    func createManager(stateDelegate: BluetoothStateDelegate) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        deletage = stateDelegate
     }
 
     func connectionStart() {
-
-
         centralManager?.scanForPeripheralsWithServices([cbuuid], options: [CBCentralManagerScanOptionAllowDuplicatesKey:false])
     }
 
@@ -49,13 +53,13 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     func centralManager(central: CBCentralManager,
                         didConnectPeripheral peripheral: CBPeripheral)
     {
-        print("connected!")
+        deletage!.changeState("connected")
     }
 
     func centralManager(central: CBCentralManager,
                         didFailToConnectPeripheral peripheral: CBPeripheral,
                         error: NSError?)
     {
-        print("failed...")
+        deletage!.changeState("connection faild...")
     }
 }
