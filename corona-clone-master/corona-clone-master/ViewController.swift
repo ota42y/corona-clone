@@ -139,12 +139,13 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         } else {
             // end training
             mode = Mode.Wait
-            
+
             disableTrainingStartButton()
             hideTouchPoint()
             
             analyzeButton.enabled = true;
             mainLabel.text = "touch training or analyze button";
+            trainingButton.setTitle("Training", forState: UIControlState.Normal)
         }
     }
     
@@ -161,6 +162,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
             // end analyze
             trainingButton.enabled = true
             mainLabel.text = "touch training or analyze button";
+            analyzeButton.setTitle("Analyze", forState: UIControlState.Normal)
         }
     }
     
@@ -249,8 +251,11 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     }
     
     internal func analyzeStart() {
+        trainingButton.enabled = false
+
         mode = Mode.Analyze
         mainLabel.text = "analyze..."
+        analyzeButton.setTitle("end analyze", forState: UIControlState.Normal) ;
         
         rssiArray.removeAll(keepCapacity: true)
     }
