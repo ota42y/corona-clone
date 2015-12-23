@@ -64,7 +64,6 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
             return
         }
 
-        let services = peripheral.services!
         deletage!.changeState("secvices found...")
     }
 

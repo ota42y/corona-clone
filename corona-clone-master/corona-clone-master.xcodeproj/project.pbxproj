@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		922F063F1C2A9B630047F5AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F063E1C2A9B630047F5AB /* AppDelegate.swift */; };
+		922F06411C2A9B630047F5AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F06401C2A9B630047F5AB /* ViewController.swift */; };
+		922F06441C2A9B630047F5AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F06421C2A9B630047F5AB /* Main.storyboard */; };
+		922F06461C2A9B630047F5AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F06451C2A9B630047F5AB /* Assets.xcassets */; };
+		922F06491C2A9B630047F5AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F06471C2A9B630047F5AB /* LaunchScreen.storyboard */; };
+		922F06511C2A9C0B0047F5AB /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F06501C2A9C0B0047F5AB /* BluetoothConnector.swift */; };
+		922F06551C2A9C160047F5AB /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06521C2A9C160047F5AB /* blue.png */; };
+		922F06561C2A9C160047F5AB /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06531C2A9C160047F5AB /* green.png */; };
+		922F06571C2A9C160047F5AB /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06541C2A9C160047F5AB /* orange.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		922F063B1C2A9B630047F5AB /* corona-clone-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "corona-clone-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		922F063E1C2A9B630047F5AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		922F06401C2A9B630047F5AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		922F06431C2A9B630047F5AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		922F06451C2A9B630047F5AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		922F06481C2A9B630047F5AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		922F064A1C2A9B630047F5AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922F06501C2A9C0B0047F5AB /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
+		922F06521C2A9C160047F5AB /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		922F06531C2A9C160047F5AB /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		922F06541C2A9C160047F5AB /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		922F06381C2A9B630047F5AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		922F06321C2A9B630047F5AB = {
+			isa = PBXGroup;
+			children = (
+				922F063D1C2A9B630047F5AB /* corona-clone-master */,
+				922F063C1C2A9B630047F5AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		922F063C1C2A9B630047F5AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				922F063B1C2A9B630047F5AB /* corona-clone-master.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		922F063D1C2A9B630047F5AB /* corona-clone-master */ = {
+			isa = PBXGroup;
+			children = (
+				922F06521C2A9C160047F5AB /* blue.png */,
+				922F06531C2A9C160047F5AB /* green.png */,
+				922F06541C2A9C160047F5AB /* orange.png */,
+				922F06501C2A9C0B0047F5AB /* BluetoothConnector.swift */,
+				922F063E1C2A9B630047F5AB /* AppDelegate.swift */,
+				922F06401C2A9B630047F5AB /* ViewController.swift */,
+				922F06421C2A9B630047F5AB /* Main.storyboard */,
+				922F06451C2A9B630047F5AB /* Assets.xcassets */,
+				922F06471C2A9B630047F5AB /* LaunchScreen.storyboard */,
+				922F064A1C2A9B630047F5AB /* Info.plist */,
+			);
+			path = "corona-clone-master";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		922F063A1C2A9B630047F5AB /* corona-clone-master */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 922F064D1C2A9B630047F5AB /* Build configuration list for PBXNativeTarget "corona-clone-master" */;
+			buildPhases = (
+				922F06371C2A9B630047F5AB /* Sources */,
+				922F06381C2A9B630047F5AB /* Frameworks */,
+				922F06391C2A9B630047F5AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "corona-clone-master";
+			productName = "corona-clone-master";
+			productReference = 922F063B1C2A9B630047F5AB /* corona-clone-master.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		922F06331C2A9B630047F5AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = ota42y;
+				TargetAttributes = {
+					922F063A1C2A9B630047F5AB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TH3XG2NXVX;
+					};
+				};
+			};
+			buildConfigurationList = 922F06361C2A9B630047F5AB /* Build configuration list for PBXProject "corona-clone-master" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 922F06321C2A9B630047F5AB;
+			productRefGroup = 922F063C1C2A9B630047F5AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				922F063A1C2A9B630047F5AB /* corona-clone-master */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		922F06391C2A9B630047F5AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922F06491C2A9B630047F5AB /* LaunchScreen.storyboard in Resources */,
+				922F06461C2A9B630047F5AB /* Assets.xcassets in Resources */,
+				922F06561C2A9C160047F5AB /* green.png in Resources */,
+				922F06441C2A9B630047F5AB /* Main.storyboard in Resources */,
+				922F06551C2A9C160047F5AB /* blue.png in Resources */,
+				922F06571C2A9C160047F5AB /* orange.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		922F06371C2A9B630047F5AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922F06511C2A9C0B0047F5AB /* BluetoothConnector.swift in Sources */,
+				922F06411C2A9B630047F5AB /* ViewController.swift in Sources */,
+				922F063F1C2A9B630047F5AB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		922F06421C2A9B630047F5AB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				922F06431C2A9B630047F5AB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		922F06471C2A9B630047F5AB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				922F06481C2A9B630047F5AB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		922F064B1C2A9B630047F5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		922F064C1C2A9B630047F5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		922F064E1C2A9B630047F5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "corona-clone-master/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ota42y.corona-clone-master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		922F064F1C2A9B630047F5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "corona-clone-master/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ota42y.corona-clone-master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		922F06361C2A9B630047F5AB /* Build configuration list for PBXProject "corona-clone-master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				922F064B1C2A9B630047F5AB /* Debug */,
+				922F064C1C2A9B630047F5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		922F064D1C2A9B630047F5AB /* Build configuration list for PBXNativeTarget "corona-clone-master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				922F064E1C2A9B630047F5AB /* Debug */,
+				922F064F1C2A9B630047F5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 922F06331C2A9B630047F5AB /* Project object */;
+}

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  colona-clone-master
+//  corona-clone-master
 //
 //  Created by ota42y on 2015/12/23.
 //  Copyright © 2015年 ota42y. All rights reserved.
