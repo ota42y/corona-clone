@@ -33,7 +33,6 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     var touchPointImageView: UIImageView!
     var connector = BluetoothConnector()
 
-    var trainingCount = 0
     var rssiArray: [String] = []
 
     var trainingPoint = Dictionary<String, UIImageView>()
@@ -56,6 +55,8 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         disableTrainingStartButton()
 
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
+
+        deleteTrainingData()
     }
 
     internal func enableTrainingStartButton() {
@@ -127,6 +128,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         mode = Mode.TrainingWait
 
         analyzeButton.enabled = false;
+        trainingButton.enabled = true
         mainLabel.text = "touch training point and set iphone";
         trainingButton.setTitle("end training", forState: UIControlState.Normal)
     }
@@ -135,10 +137,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         connectionLabel.text = "connection: " + text
     }
 
-    func sendTrainingData() -> Bool {
-        // create the url-request
-        var rssiString = rssiArray.joinWithSeparator(",")
-        let url = "\(TRAINING_URL)?tag=\(nowPointName)&data=[\(rssiString)]"
+    func sendServer(url: String) -> NSString {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
 
         // set the method(HTTP-GET)
@@ -147,10 +146,34 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         do {
             var response: NSURLResponse?
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
-            return true
+
+            if let httpResponse = response as? NSHTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    var str:NSString = NSString(data:data, encoding: NSUTF8StringEncoding)!
+                    return str
+                }
+            }
         } catch (let e) {
             print(e)
-            return false
+        }
+        return ""
+    }
+
+    func deleteTrainingData() {
+        let url = "\(TRAINING_URL)/delete"
+        sendServer(url)
+    }
+
+    func sendTrainingData() -> Int {
+        // create the url-request
+        var rssiString = rssiArray.joinWithSeparator(",")
+        let url = "\(TRAINING_URL)/training?tag=\(nowPointName)&data=\(rssiString)"
+
+        let res = sendServer(url)
+        if res == "" {
+            return 0
+        }else{
+            return res.integerValue
         }
     }
 
@@ -159,12 +182,27 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         if (ret.success) {
             rssiArray += ["\(ret.rssi)"]
             if (rssiArray.count == RSSI_VERTOR_LENGTH) {
-                if (sendTrainingData()) {
-                    trainingCount++
+                let count = sendTrainingData()
+                mainLabel.text = "training(\(count)/\(TRAINING_COUNT))..."
+                if (TRAINING_COUNT <= count) {
+                    // end training
+                    NSLog("end training \(nowPointName)")
+                    endTraining()
                 }
                 rssiArray.removeFirst()
             }
         }
+    }
+
+    func endTraining() {
+        trainingPoint[nowPointName]!.removeFromSuperview()
+
+        let img:UIImage?  = UIImage(named: "green.png")
+        trainingPoint[nowPointName] = UIImageView(image: img)
+        trainingPoint[nowPointName]!.center = touchPoint
+        view.addSubview(trainingPoint[nowPointName]!)
+
+        initTrainingMode()
     }
 
     func onUpdate(timer: NSTimer) {
