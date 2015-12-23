@@ -21,6 +21,10 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     @IBOutlet weak var trainingStartButton: UIButton!
     @IBOutlet weak var connectionLabel: UILabel!
 
+    var RSSI_VERTOR_LENGTH = 10 //
+    var TRAINING_COUNT = 10
+    var TRAINING_URL = "http://192.168.1.1:8080"  // change me
+
     var mode = Mode.Wait
 
     var nowPointName = ""
@@ -29,9 +33,8 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     var touchPointImageView: UIImageView!
     var connector = BluetoothConnector()
 
-    var RSSI_VERTOR_LENGTH = 10 //
     var trainingCount = 0
-    var rssiArray: [Double] = []
+    var rssiArray: [String] = []
 
     var trainingPoint = Dictionary<String, UIImageView>()
 
@@ -132,16 +135,33 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         connectionLabel.text = "connection: " + text
     }
 
-    func sendTrainingData() {
-        NSLog("\(rssiArray)")
+    func sendTrainingData() -> Bool {
+        // create the url-request
+        var rssiString = rssiArray.joinWithSeparator(",")
+        let url = "\(TRAINING_URL)?tag=\(nowPointName)&data=[\(rssiString)]"
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+
+        // set the method(HTTP-GET)
+        request.HTTPMethod = "GET"
+
+        do {
+            var response: NSURLResponse?
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+            return true
+        } catch (let e) {
+            print(e)
+            return false
+        }
     }
 
     func training() {
         let ret = connector.getRSSI()
         if (ret.success) {
-            rssiArray += [ret.rssi]
+            rssiArray += ["\(ret.rssi)"]
             if (rssiArray.count == RSSI_VERTOR_LENGTH) {
-                sendTrainingData()
+                if (sendTrainingData()) {
+                    trainingCount++
+                }
                 rssiArray.removeFirst()
             }
         }
