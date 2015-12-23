@@ -22,25 +22,30 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     @IBOutlet weak var connectionLabel: UILabel!
 
     var mode = Mode.Wait
-    var nowPoint: CGPoint!
-    var nowPointImageView: UIImageView!
+
+    var nowPointName = ""
+
+    var touchPoint: CGPoint!
+    var touchPointImageView: UIImageView!
     var connector = BluetoothConnector()
 
     var RSSI_VERTOR_LENGTH = 10 //
     var trainingCount = 0
     var rssiArray: [Double] = []
 
+    var trainingPoint = Dictionary<String, UIImageView>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         connector.createManager(self)
 
-        nowPoint = CGPoint.zero;
+        touchPoint = CGPoint.zero;
 
         let img:UIImage?  = UIImage(named: "blue.png")
-        nowPointImageView = UIImageView(image: img)
-        view.addSubview(nowPointImageView)
-        nowPointImageView.hidden = true
+        touchPointImageView = UIImageView(image: img)
+        view.addSubview(touchPointImageView)
+        touchPointImageView.hidden = true
 
         trainingButton.addTarget(self, action: "onClickTrainingButton:", forControlEvents: .TouchUpInside)
 
@@ -61,8 +66,12 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     }
 
     internal func showNowTrainingPoint() {
-        nowPointImageView.center = nowPoint
-        nowPointImageView.hidden = false
+        touchPointImageView.center = touchPoint
+        touchPointImageView.hidden = false
+    }
+
+    internal func hideTouchPoint() {
+        touchPointImageView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +82,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (mode == Mode.TrainingWait) {
             if let touch = touches.first {
-                nowPoint = touch.locationInView(view)
+                touchPoint = touch.locationInView(view)
                 showNowTrainingPoint()
                 enableTrainingStartButton()
             }
@@ -83,10 +92,17 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     internal func onClickTrainingStartButton(sender: UIButton) {
         if (mode == Mode.TrainingWait) {
             disableTrainingStartButton()
+            hideTouchPoint()
             trainingButton.enabled = false
 
             mainLabel.text = "training..."
             mode = Mode.Training
+
+            nowPointName = "pos_\(trainingPoint.count)"
+            let img:UIImage?  = UIImage(named: "blue.png")
+            trainingPoint[nowPointName] = UIImageView(image: img)
+            trainingPoint[nowPointName]!.center = touchPoint
+            view.addSubview(trainingPoint[nowPointName]!)
 
             rssiArray.removeAll(keepCapacity: true)
             connector.connectionStart()
