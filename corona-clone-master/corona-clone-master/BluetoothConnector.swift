@@ -15,7 +15,7 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     var device: CBPeripheral?
     var deletage: BluetoothStateDelegate?
 
-    var cbuuid = CBUUID(string: "5B2D690E-2AD9-4243-8E33-77DFCF318383")
+    var cbuuid = CBUUID(string: "8E89706B-B35B-4E2F-BE2E-E7E915DC3E56")
 
     func createManager(stateDelegate: BluetoothStateDelegate) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
@@ -24,19 +24,19 @@ class BluetoothConnector : NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
 
     func connectionStart() {
         if device == nil {
-            NSLog("connection start")
+            deletage!.changeState("start")
             centralManager?.scanForPeripheralsWithServices([cbuuid], options: [CBCentralManagerScanOptionAllowDuplicatesKey:false])
         }
     }
 
     func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("state: \(central.state)")
+        NSLog("state: \(central.state)")
     }
 
     func centralManager(central: CBCentralManager,
                         didDiscoverPeripheral peripheral: CBPeripheral,
                         advertisementData: [String : AnyObject],
-                        RSSI: NSNumber!)
+                        RSSI: NSNumber)
     {
         device = peripheral;
         device!.delegate = self;

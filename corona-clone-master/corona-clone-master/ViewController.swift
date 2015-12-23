@@ -15,6 +15,12 @@ enum Mode {
     case Analyze
 }
 
+enum Seq {
+    case None
+    case Send
+    case Ret
+}
+
 class ViewController: UIViewController, BluetoothStateDelegate {
     @IBOutlet weak var trainingButton: UIButton!
     @IBOutlet weak var analyzeButton: UIButton!
@@ -35,6 +41,9 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     var touchPointImageView: UIImageView!
     var analyzePointImageView: UIImageView!
     var connector = BluetoothConnector()
+    
+    var sequence = Seq.None
+    var returnValue = ""
     
     var rssiArray: [String] = []
     
@@ -122,6 +131,7 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     }
     
     internal func onClickTrainingButton(sender: UIButton){
+        sequence = Seq.None
         if (mode == Mode.Wait) {
             // init training
             connector.connectionStart()
@@ -139,13 +149,13 @@ class ViewController: UIViewController, BluetoothStateDelegate {
     }
     
     internal func onClickAnalyzeButton(sender: UIButton) {
+        sequence = Seq.None
         if (mode == Mode.Wait) {
             connector.connectionStart()
             
             analyzeStart()
         } else {
             mode = Mode.Wait
-            
             analyzePointImageView.hidden = true
             
             // end analyze
@@ -167,26 +177,26 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         connectionLabel.text = "connection: " + text
     }
     
-    func sendServer(url: String) -> NSString {
-        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    func sendServer(url: String) {
+        sequence = Seq.Send
         
-        // set the method(HTTP-GET)
-        request.HTTPMethod = "GET"
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        let req = NSURLRequest(URL: NSURL(string: url)!)
         
-        do {
-            var response: NSURLResponse?
-            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+        //NSURLSessionDownloadTask is retured from session.dataTaskWithRequest
+        let task = session.dataTaskWithRequest(req, completionHandler: {
+            (data, resp, err) in
             
-            if let httpResponse = response as? NSHTTPURLResponse {
+            if let httpResponse = resp as? NSHTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    let str:NSString = NSString(data:data, encoding: NSUTF8StringEncoding)!
-                    return str
+                    self.returnValue = NSString(data:data!, encoding: NSUTF8StringEncoding)! as String
                 }
             }
-        } catch (let e) {
-            print(e)
-        }
-        return ""
+            
+            self.sequence = Seq.Ret
+        })
+        task.resume()
     }
     
     func deleteTrainingData() {
@@ -194,35 +204,36 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         sendServer(url)
     }
     
-    func sendTrainingData() -> Int {
+    func sendTrainingData() {
         // create the url-request
         let rssiString = rssiArray.joinWithSeparator(",")
         let url = "\(TRAINING_URL)/training?tag=\(nowPointName)&data=\(rssiString)"
         
         NSLog("training \(rssiString)")
         
-        let res = sendServer(url)
-        if res == "" {
-            return 0
-        }else{
-            return res.integerValue
-        }
+        sendServer(url)
     }
     
     func training() {
-        let ret = connector.getRSSI()
-        if (ret.success) {
-            rssiArray += ["\(ret.rssi)"]
-            if (rssiArray.count == RSSI_VERTOR_LENGTH) {
-                let count = sendTrainingData()
-                mainLabel.text = "training(\(count)/\(TRAINING_COUNT))..."
-                if (TRAINING_COUNT <= count) {
-                    // end training
-                    NSLog("end training \(nowPointName)")
-                    endTraining()
+        if (sequence == Seq.None) {
+            let ret = connector.getRSSI()
+            if (ret.success) {
+                rssiArray += ["\(ret.rssi)"]
+                if (rssiArray.count == RSSI_VERTOR_LENGTH) {
+                    sendTrainingData()
                 }
-                rssiArray.removeFirst()
             }
+        }else if (sequence == Seq.Ret) {
+            sequence = Seq.None
+            
+            let count = Int(returnValue)
+            mainLabel.text = "training(\(count)/\(TRAINING_COUNT))..."
+            if (TRAINING_COUNT <= count) {
+                // end training
+                NSLog("end training \(nowPointName)")
+                endTraining()
+            }
+            rssiArray.removeFirst()
         }
     }
     
@@ -244,30 +255,33 @@ class ViewController: UIViewController, BluetoothStateDelegate {
         rssiArray.removeAll(keepCapacity: true)
     }
     
-    func sendAnalyzeData() -> String {
+    func sendAnalyzeData() {
         let rssiString = rssiArray.joinWithSeparator(",")
         let url = "\(TRAINING_URL)/analyze?data=\(rssiString)"
-        
-        let res = sendServer(url)
-        return res as String
+        sendServer(url)
     }
     
     func analyze() {
-        let ret = connector.getRSSI()
-        if (ret.success) {
-            rssiArray += ["\(ret.rssi)"]
-            if (rssiArray.count == RSSI_VERTOR_LENGTH) {
-                let pointName = sendAnalyzeData()
-                
-                if let point = trainingPoint[pointName]?.center {
-                    analyzePointImageView.center = point
-                    analyzePointImageView.hidden = false
-                    view.bringSubviewToFront(analyzePointImageView)
+        if (sequence == Seq.None) {
+            let ret = connector.getRSSI()
+            if (ret.success) {
+                rssiArray += ["\(ret.rssi)"]
+                if (rssiArray.count == RSSI_VERTOR_LENGTH) {
+                    sendAnalyzeData()
                 }
-                
-                rssiArray.removeFirst()
             }
+        }else{
+            sequence = Seq.None
+            
+            if let point = trainingPoint[returnValue]?.center {
+                analyzePointImageView.center = point
+                analyzePointImageView.hidden = false
+                view.bringSubviewToFront(analyzePointImageView)
+            }
+            
+            rssiArray.removeFirst()
         }
+
     }
     
     func onUpdate(timer: NSTimer) {

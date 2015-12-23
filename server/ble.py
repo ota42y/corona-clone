@@ -31,8 +31,6 @@ def getLabel(input):
             label_list.append(number)
             data_list.append(data)
     
-    print(label_list)
-    
     return cls(label_list, data_list, input)
 
 def analyze(o):

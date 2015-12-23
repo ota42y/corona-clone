@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		922F06651C2A9DEB0047F5AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F06641C2A9DEB0047F5AB /* AppDelegate.swift */; };
+		922F06671C2A9DEB0047F5AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F06661C2A9DEB0047F5AB /* ViewController.swift */; };
+		922F066A1C2A9DEB0047F5AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F06681C2A9DEB0047F5AB /* Main.storyboard */; };
+		922F066C1C2A9DEB0047F5AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F066B1C2A9DEB0047F5AB /* Assets.xcassets */; };
+		922F066F1C2A9DEB0047F5AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F066D1C2A9DEB0047F5AB /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		922F06611C2A9DEB0047F5AB /* corona-clone-slave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "corona-clone-slave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		922F06641C2A9DEB0047F5AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		922F06661C2A9DEB0047F5AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		922F06691C2A9DEB0047F5AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		922F066B1C2A9DEB0047F5AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		922F066E1C2A9DEB0047F5AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		922F06701C2A9DEB0047F5AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		922F065E1C2A9DEB0047F5AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		922F06581C2A9DEB0047F5AB = {
+			isa = PBXGroup;
+			children = (
+				922F06631C2A9DEB0047F5AB /* corona-clone-slave */,
+				922F06621C2A9DEB0047F5AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		922F06621C2A9DEB0047F5AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				922F06611C2A9DEB0047F5AB /* corona-clone-slave.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		922F06631C2A9DEB0047F5AB /* corona-clone-slave */ = {
+			isa = PBXGroup;
+			children = (
+				922F06641C2A9DEB0047F5AB /* AppDelegate.swift */,
+				922F06661C2A9DEB0047F5AB /* ViewController.swift */,
+				922F06681C2A9DEB0047F5AB /* Main.storyboard */,
+				922F066B1C2A9DEB0047F5AB /* Assets.xcassets */,
+				922F066D1C2A9DEB0047F5AB /* LaunchScreen.storyboard */,
+				922F06701C2A9DEB0047F5AB /* Info.plist */,
+			);
+			path = "corona-clone-slave";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		922F06601C2A9DEB0047F5AB /* corona-clone-slave */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 922F06731C2A9DEB0047F5AB /* Build configuration list for PBXNativeTarget "corona-clone-slave" */;
+			buildPhases = (
+				922F065D1C2A9DEB0047F5AB /* Sources */,
+				922F065E1C2A9DEB0047F5AB /* Frameworks */,
+				922F065F1C2A9DEB0047F5AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "corona-clone-slave";
+			productName = "corona-clone-slave";
+			productReference = 922F06611C2A9DEB0047F5AB /* corona-clone-slave.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		922F06591C2A9DEB0047F5AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = ota42y;
+				TargetAttributes = {
+					922F06601C2A9DEB0047F5AB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TH3XG2NXVX;
+					};
+				};
+			};
+			buildConfigurationList = 922F065C1C2A9DEB0047F5AB /* Build configuration list for PBXProject "corona-clone-slave" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 922F06581C2A9DEB0047F5AB;
+			productRefGroup = 922F06621C2A9DEB0047F5AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				922F06601C2A9DEB0047F5AB /* corona-clone-slave */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		922F065F1C2A9DEB0047F5AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922F066F1C2A9DEB0047F5AB /* LaunchScreen.storyboard in Resources */,
+				922F066C1C2A9DEB0047F5AB /* Assets.xcassets in Resources */,
+				922F066A1C2A9DEB0047F5AB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		922F065D1C2A9DEB0047F5AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922F06671C2A9DEB0047F5AB /* ViewController.swift in Sources */,
+				922F06651C2A9DEB0047F5AB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		922F06681C2A9DEB0047F5AB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				922F06691C2A9DEB0047F5AB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		922F066D1C2A9DEB0047F5AB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				922F066E1C2A9DEB0047F5AB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		922F06711C2A9DEB0047F5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		922F06721C2A9DEB0047F5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		922F06741C2A9DEB0047F5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "corona-clone-slave/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ota42y.corona-clone-slave";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		922F06751C2A9DEB0047F5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "corona-clone-slave/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ota42y.corona-clone-slave";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		922F065C1C2A9DEB0047F5AB /* Build configuration list for PBXProject "corona-clone-slave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				922F06711C2A9DEB0047F5AB /* Debug */,
+				922F06721C2A9DEB0047F5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		922F06731C2A9DEB0047F5AB /* Build configuration list for PBXNativeTarget "corona-clone-slave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				922F06741C2A9DEB0047F5AB /* Debug */,
+				922F06751C2A9DEB0047F5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 922F06591C2A9DEB0047F5AB /* Project object */;
+}

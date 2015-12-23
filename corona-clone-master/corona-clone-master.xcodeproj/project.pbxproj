@@ -16,6 +16,7 @@
 		922F06551C2A9C160047F5AB /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06521C2A9C160047F5AB /* blue.png */; };
 		922F06561C2A9C160047F5AB /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06531C2A9C160047F5AB /* green.png */; };
 		922F06571C2A9C160047F5AB /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 922F06541C2A9C160047F5AB /* orange.png */; };
+		922F06771C2AAB130047F5AB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 922F06761C2AAB130047F5AB /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		922F06521C2A9C160047F5AB /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
 		922F06531C2A9C160047F5AB /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		922F06541C2A9C160047F5AB /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		922F06761C2AAB130047F5AB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922F06771C2AAB130047F5AB /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 		922F06321C2A9B630047F5AB = {
 			isa = PBXGroup;
 			children = (
+				922F06761C2AAB130047F5AB /* CoreBluetooth.framework */,
 				922F063D1C2A9B630047F5AB /* corona-clone-master */,
 				922F063C1C2A9B630047F5AB /* Products */,
 			);
@@ -307,6 +311,7 @@
 				922F064F1C2A9B630047F5AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
