@@ -18,6 +18,18 @@ I don't implement original algorithm, but while not the same as the original , i
 - Training positions.
 - Start analyze
 
+# Corona-clone-master
+- Tap 'Training'
+- Tap training point on screen.
+  - Blue circe is training point.
+- But your phone to the side of the point
+- Tap training start button
+- When blue circle change to green, training complete.
+- Training few point.
+- Tap end training button
+- Tap analyze button
+- Put your phone to any point
+- The application show your phone position by orange circe
 
 # Setup server
 requires
